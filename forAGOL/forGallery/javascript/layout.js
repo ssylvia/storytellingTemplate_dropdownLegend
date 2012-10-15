@@ -58,8 +58,6 @@
          configOptions.bingmapskey = urlObject.query.bingMapsKey;
        }
 
-	   esri.arcgis.utils.arcgisUrl = "http://arcgis.com/sharing/content/items";
-
 	   	   //is an appid specified - if so read json from there
 	  if(configOptions.appid || (urlObject.query && urlObject.query.appid)){
 		var appid = configOptions.appid || urlObject.query.appid;

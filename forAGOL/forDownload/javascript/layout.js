@@ -55,8 +55,6 @@
          configOptions.bingmapskey = urlObject.query.bingMapsKey;
        }
 
-	   esri.arcgis.utils.arcgisUrl = "http://arcgis.com/sharing/content/items";
-
 	   var mapDeferred = esri.arcgis.utils.createMap(configOptions.webmap, "map", {
          mapOptions: {
            slider: true,
