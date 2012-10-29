@@ -66,6 +66,7 @@
 		  content: {f:"json"},
 		  callbackParamName:"callback",
 		  load: function(response){
+               if(response.values.webmap !== undefined){configOptions.webmap = response.values.webmap;}
 			   if(response.values.title !== undefined){configOptions.title = response.values.title;}
 			   if(response.values.subtitle !== undefined){configOptions.subtitle = response.values.subtitle;}
 			   if(response.values.legend !== undefined){configOptions.legend = response.values.legend;}
