@@ -84,8 +84,8 @@
 
 	 function createMap(){
 
-	   if (configOptions.legend == false){
-		   $("#legendToggle").hide();
+	   if (configOptions.legend === "false"){
+           $("#legendToggle").hide();
 	   }
 
 	   var mapDeferred = esri.arcgis.utils.createMap(configOptions.webmap, "map", {
@@ -147,7 +147,7 @@
          legendDijit.startup();
        }
        else{
-         dojo.byId('legendDiv').innerHTML = "";
+         $("#legendToggle").hide();
        }
      }
 

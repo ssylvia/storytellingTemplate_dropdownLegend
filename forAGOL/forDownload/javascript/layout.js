@@ -51,9 +51,18 @@
        if(urlObject.query.webmap){
          configOptions.webmap = urlObject.query.webmap;
        }
+       if(urlObject.query.legend){
+         configOptions.legend = urlObject.query.legend;
+       }
        if(urlObject.query.bingMapsKey){
          configOptions.bingmapskey = urlObject.query.bingMapsKey;
        }
+
+       console.log(configOptions.legend)
+
+       if (configOptions.legend === "false"){
+    	   $("#legendToggle").hide();
+	   }
 
 	   var mapDeferred = esri.arcgis.utils.createMap(configOptions.webmap, "map", {
          mapOptions: {
@@ -104,6 +113,7 @@
          scalebarUnit:i18n.viewer.main.scaleBarUnits //metric or english
        });
 
+
        var layerInfo = buildLayersList(layers);
 
        if(layerInfo.length > 0){
@@ -114,7 +124,7 @@
          legendDijit.startup();
        }
        else{
-         dojo.byId('legendDiv').innerHTML = "";
+         $("#legendToggle").hide();
        }
      }
 
