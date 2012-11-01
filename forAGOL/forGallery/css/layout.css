@@ -1,4 +1,4 @@
-﻿ 	  html,body {
+ 	  html,body {
       height:100%;
       width:100%;
       padding:0;
@@ -123,17 +123,18 @@
       .map .bingLogo-lg {
       left:18px !important;
       }
-	  
-	  #legendCon{
+
+      #legendCon{
 	  position:absolute;
  	  width:300px !important;
 	  margin-left:100px;
+      border:2px solid #848484;
   	  z-index:100;
 	  }
 
 	  #legendDiv{
 	  display:none;
-	  background:#848484;
+	  background:#dadada;
 	  max-height:450px;
 	  overflow:auto;
 	  padding:10px;
@@ -144,7 +145,7 @@
 	  position:relative;
 	  background:#848484;
 	  margin-top:-1px;
-	  width:125px;
+	  width:100%;
 	  .height:28px;
 	  cursor:pointer;
 	  z-index:100;
