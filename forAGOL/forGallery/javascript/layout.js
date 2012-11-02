@@ -85,7 +85,7 @@
 
 	 function createMap(){
 
-	   if (configOptions.legend === "false"){
+	   if (configOptions.legend === "false" || configOptions.legend === false){
            $("#legendToggle").hide();
 	   }
 

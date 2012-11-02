@@ -47,3 +47,4 @@
 {"ts":1351544312289,"patch":[[{"diffs":[[0,"onse.values.titl"],[1,"webmap"],[0,"e;}\n\t\t\t   if(res"]],"start1":2596,"start2":2596,"length1":32,"length2":38}]],"length":8448,"saved":false}
 {"ts":1351544313226,"patch":[[{"diffs":[[0,"ues.titl"],[-1,"webmap"],[0,"e;}\n\t\t\t "]],"start1":2604,"start2":2604,"length1":22,"length2":16}]],"length":8442,"saved":false}
 {"ts":1351544315185,"patch":[[{"diffs":[[0,"response.values."],[-1,"title"],[1,"webmap"],[0,";}\n\t\t\t   if(resp"]],"start1":2592,"start2":2592,"length1":37,"length2":38}]],"length":8443,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1351890976243,"patch":[[{"diffs":[[0," \"false\""],[1," || configOptions.legend === false"],[0,"){\n     "]],"start1":3159,"start2":3159,"length1":16,"length2":50}]],"length":8477,"saved":false}
