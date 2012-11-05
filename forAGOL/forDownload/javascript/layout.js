@@ -60,8 +60,8 @@
 
        console.log(configOptions.legend)
 
-       if (configOptions.legend === "false"){
-    	   $("#legendToggle").hide();
+       if (configOptions.legend === "false" || configOptions.legend === false){
+    	   $("#legendCon").hide();
 	   }
 
 	   var mapDeferred = esri.arcgis.utils.createMap(configOptions.webmap, "map", {

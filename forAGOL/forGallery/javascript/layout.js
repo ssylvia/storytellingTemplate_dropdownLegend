@@ -86,7 +86,7 @@
 	 function createMap(){
 
 	   if (configOptions.legend === "false" || configOptions.legend === false){
-           $("#legendToggle").hide();
+           $("#legendCon").hide();
 	   }
 
 	   var mapDeferred = esri.arcgis.utils.createMap(configOptions.webmap, "map", {
