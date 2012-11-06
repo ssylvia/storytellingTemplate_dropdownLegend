@@ -25,9 +25,13 @@
        if(configOptions.isRightToLeft){
          dirNode.setAttribute("dir","rtl");
          dojo.addClass( dirNode,"esriRtl");
+         //Page Specific
+         dojo.attr(dojo.byId("legendCon"),"dir","rtl");
        }else{
          dirNode.setAttribute("dir","ltr");
          dojo.addClass(dirNode,"esriLtr");
+         //Page Specific
+         dojo.attr(dojo.byId("legendCon"),"dir","ltr");
        }
 
 	   //get the localization strings
