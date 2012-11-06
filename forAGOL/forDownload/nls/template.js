@@ -1,4 +1,4 @@
-﻿define({root:
+define({root:
 ({
   viewer:{
     main:{

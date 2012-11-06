@@ -1,16 +1,11 @@
   dojo.require("esri.map");
-  dojo.require("esri.dijit.Legend");
-  dojo.require("esri.dijit.Scalebar");
+  dojo.require("esri.layout");
+  dojo.require("esri.widgets");
   dojo.require("esri.arcgis.utils");
-  dojo.require("esri.IdentityManager");
-  dojo.require("dijit.dijit");
-  dojo.require("dijit.layout.BorderContainer");
-  dojo.require("dijit.layout.ContentPane");
-  dojo.require("dijit.layout.StackContainer");
   dojo.requireLocalization("esriTemplate","template");
 
 
-     var map, urlObjects, i18n;
+     var map, urlObject, i18n;
 
 	 function initMap() {
        patchID();
@@ -92,6 +87,7 @@
 	   var mapDeferred = esri.arcgis.utils.createMap(configOptions.webmap, "map", {
          mapOptions: {
            slider: true,
+           sliderStyle:"small",
            nav: false,
            wrapAround180:true
          },
