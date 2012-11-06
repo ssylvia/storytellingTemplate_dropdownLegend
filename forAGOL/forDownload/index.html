@@ -46,7 +46,9 @@
         //specify the url to a geometry service
         geometryserviceurl:"http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer",
         //Modify this to point to your sharing service URL if you are using the portal
-        sharingurl :"http://arcgis.com/sharing/content/items"
+        sharingurl :"http://arcgis.com/sharing/content/items",
+        //Shift applicaton to read right to left
+        isRightToLeft : false
       };
         initMap();
     }
@@ -79,8 +81,8 @@
           </div>
 
           <!-- Map Section -->
-          <div id="map" dojotype="dijit.layout.ContentPane" region="center">
-            <div id="legendCon">
+          <div id="map" dojotype="dijit.layout.ContentPane" region="center" dir="ltr">
+            <div id="legendCon"  dir="rtl">
               	<div id="legendToggle"><p id="legTogText"></p></div>
              	<div id="legendDiv"></div>
             </div>

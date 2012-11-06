@@ -201,3 +201,17 @@
 	  .esriViewPopup .gallery{
 	  background-color:#dadada;
 	  }
+
+      .esriRtl #headerText{
+      float:right;
+      padding-right:25px;
+      }
+
+      .esriRtl #title{
+      text-align:right;
+      }
+
+      .esriRtl #logoArea{
+      float:left;
+      padding-right:25px;
+      }

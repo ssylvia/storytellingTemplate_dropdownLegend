@@ -14,6 +14,21 @@
 
 	 function initMap() {
        patchID();
+       
+       dojo.some(["ar","he"], function(l){
+         if(dojo.locale.indexOf(l) !== -1){
+           configOptions.isRightToLeft = true;
+           return true;
+         }
+       });
+       var dirNode = document.getElementsByTagName("html")[0];
+       if(configOptions.isRightToLeft){
+         dirNode.setAttribute("dir","rtl");
+         dojo.addClass( dirNode,"esriRtl");
+       }else{
+         dirNode.setAttribute("dir","ltr");
+         dojo.addClass(dirNode,"esriLtr");
+       }
 
 	   //get the localization strings
   	   i18n = dojo.i18n.getLocalization("esriTemplate","template");
