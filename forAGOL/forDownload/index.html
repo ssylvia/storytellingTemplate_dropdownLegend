@@ -14,7 +14,8 @@
       var dojoConfig = {
 		  parseOnLoad: true,
 		  packages:[
-			{name:"esriTemplate",location:location.pathname.replace(/\/[^/]+$/, '')}
+			{name:"esriTemplate",location:location.pathname.replace(/\/[^/]+$/, '')},
+            {name:"utilities",location:location.pathname.replace(/\/[^/]+$/, '') + '/javascript'}
 		  ]
 		};
     </script>
@@ -50,7 +51,7 @@
         //Shift applicaton to read right to left
         isRightToLeft : false
       };
-        initMap();
+        utilities.layout.initMap();
     }
 
     //show map on load

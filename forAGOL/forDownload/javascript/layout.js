@@ -1,14 +1,34 @@
+  dojo.provide("utilities.layout");
+
   dojo.require("esri.map");
   dojo.require("esri.layout");
   dojo.require("esri.widgets");
   dojo.require("esri.arcgis.utils");
+  dojo.require("utilities.layout");
   dojo.requireLocalization("esriTemplate","template");
 
+  //Jquery Layout
+    $(document).ready(function(e) {
+      $("#legendToggle").click(function(){
+		if ($("#legendDiv").css('display')=='none'){
+		  $("#legTogText").html(i18n.viewer.legToggle.up);
+		}
+		else{
+		  $("#legTogText").html(i18n.viewer.legToggle.down);
+		}
+		$("#legendDiv").slideToggle();
+	  });
+    });
 
-     var map, urlObject, i18n;
+  utilities.layout = {};
+  dojo.mixin(utilities.layout,{
 
-	 function initMap() {
-       patchID();
+    map:null,
+    urlObject:null,
+    i18n:null,
+
+    initMap: function() {
+       this.patchID();
 
        dojo.some(["ar","he"], function(l){
          if(dojo.locale.indexOf(l) !== -1){
@@ -29,7 +49,7 @@
          dojo.attr(dojo.byId("legendCon"),"dir","ltr");
        }
 
-	   //get the localization strings
+       //get the localization strings
   	   i18n = dojo.i18n.getLocalization("esriTemplate","template");
 
 	   dojo.byId('loading').innerHTML = i18n.viewer.loading.message;
@@ -95,15 +115,15 @@
 
          map = response.map;
 
-		 dojo.connect(map,"onUpdateEnd",hideLoader);
+		 dojo.connect(map,"onUpdateEnd",utilities.layout.hideLoader);
 
          var layers = response.itemInfo.itemData.operationalLayers;
          if(map.loaded){
-           initUI(layers);
+           utilities.layout.initUI(layers);
          }
          else{
            dojo.connect(map,"onLoad",function(){
-             initUI(layers);
+             utilities.layout.initUI(layers);
            });
          }
          //resize the map when the browser resizes
@@ -114,10 +134,9 @@
          alert(i18n.viewer.errors.createMap + dojo.toJson(error.message));
        });
 
-     }
+     },
 
-
-     function initUI(layers) {
+     initUI: function(layers) {
        //add chrome theme for popup
        dojo.addClass(map.infoWindow.domNode, "chrome");
        //add the scalebar
@@ -127,7 +146,7 @@
        });
 
 
-       var layerInfo = buildLayersList(layers);
+       var layerInfo = utilities.layout.buildLayersList(layers);
 
        if(layerInfo.length > 0){
          var legendDijit = new esri.dijit.Legend({
@@ -139,10 +158,10 @@
        else{
          $("#legendToggle").hide();
        }
-     }
+     },
 
-//build a list of layers to dispaly in the legend
-  function buildLayersList(layers){
+     //build a list of layers to dispaly in the legend
+  buildLayersList: function(layers){
 
  //layers  arg is  response.itemInfo.itemData.operationalLayers;
   var layerInfos = [];
@@ -189,10 +208,9 @@
     }
   });
   return layerInfos;
-  }
+  },
 
-
-     function patchID() {  //patch id manager for use in apps.arcgis.com
+  patchID: function() {  //patch id manager for use in apps.arcgis.com
        esri.id._isIdProvider = function(server, resource) {
        // server and resource are assumed one of portal domains
 
@@ -234,21 +252,10 @@
 
        return retVal;
      };
-    }
+    },
 
-	function hideLoader(){
-	  $("#loadingCon").hide();
+    hideLoader: function(){
+      $("#loadingCon").hide();
 	}
 
-	//Jquery Layout
-	$(document).ready(function(e) {
-	  $("#legendToggle").click(function(){
-		if ($("#legendDiv").css('display')=='none'){
-		  $("#legTogText").html(i18n.viewer.legToggle.up);
-		}
-		else{
-		  $("#legTogText").html(i18n.viewer.legToggle.down);
-		}
-		$("#legendDiv").slideToggle();
-	  });
-    });
+  });
