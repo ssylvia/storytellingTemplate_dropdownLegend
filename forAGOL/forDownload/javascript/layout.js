@@ -9,8 +9,8 @@
   //Jquery Layout
     $(document).ready(function(e) {
       $("#legendToggle").click(function(){
-		if ($("#legendDiv").css('display')=='none'){
-		  $("#legTogText").html(i18n.viewer.legToggle.up);
+        if ($("#legendDiv").css('display')=='none'){
+    	  $("#legTogText").html(i18n.viewer.legToggle.up);
 		}
 		else{
 		  $("#legTogText").html(i18n.viewer.legToggle.down);
@@ -22,31 +22,12 @@
   utilities.layout = {};
   dojo.mixin(utilities.layout,{
 
-    map:null,
-    urlObject:null,
-    i18n:null,
+      map:null,
+      urlObject:null,
+      i18n:null,
 
-    initMap: function() {
-       this.patchID();
-
-       dojo.some(["ar","he"], function(l){
-         if(dojo.locale.indexOf(l) !== -1){
-           configOptions.isRightToLeft = true;
-           return true;
-         }
-       });
-       var dirNode = document.getElementsByTagName("html")[0];
-       if(configOptions.isRightToLeft){
-         dirNode.setAttribute("dir","rtl");
-         dojo.addClass( dirNode,"esriRtl");
-         //Page Specific
-         dojo.attr(dojo.byId("legendCon"),"dir","rtl");
-       }else{
-         dirNode.setAttribute("dir","ltr");
-         dojo.addClass(dirNode,"esriLtr");
-         //Page Specific
-         dojo.attr(dojo.byId("legendCon"),"dir","ltr");
-       }
+      initMap:function() {
+       utilities.layout.patchID();
 
        //get the localization strings
   	   i18n = dojo.i18n.getLocalization("esriTemplate","template");
@@ -79,20 +60,47 @@
          configOptions.title = urlObject.query.title;
        }
        if(urlObject.query.subtitle){
-         configOptions.title = urlObject.query.subtitle;
+         configOptions.subtitle = urlObject.query.subtitle;
+       }
+	   if(urlObject.query.legend){
+         configOptions.legend = urlObject.query.legend;
        }
        if(urlObject.query.webmap){
          configOptions.webmap = urlObject.query.webmap;
-       }
-       if(urlObject.query.legend){
-         configOptions.legend = urlObject.query.legend;
        }
        if(urlObject.query.bingMapsKey){
          configOptions.bingmapskey = urlObject.query.bingMapsKey;
        }
 
+	   	   //is an appid specified - if so read json from there
+	  if(configOptions.appid || (urlObject.query && urlObject.query.appid)){
+		var appid = configOptions.appid || urlObject.query.appid;
+		var requestHandle = esri.request({
+		  url: configOptions.sharingurl + "/" + appid + "/data",
+		  content: {f:"json"},
+		  callbackParamName:"callback",
+		  load: function(response){
+               if(response.values.webmap !== undefined){configOptions.webmap = response.values.webmap;}
+			   if(response.values.title !== undefined){configOptions.title = response.values.title;}
+			   if(response.values.subtitle !== undefined){configOptions.subtitle = response.values.subtitle;}
+			   if(response.values.legend !== undefined){configOptions.legend = response.values.legend;}
+
+			   utilities.layout.createMap();
+		  },
+		  error: function(response){
+			var e = response.message;
+		   alert(i18n.viewer.errors.createMap +  response.message);
+		  }
+		});
+		 }else{
+			utilities.layout.createMap();
+		 }
+	 },
+
+     createMap: function(){
+
        if (configOptions.legend === "false" || configOptions.legend === false){
-    	   $("#legendCon").hide();
+           $("#legendCon").hide();
 	   }
 
 	   var mapDeferred = esri.arcgis.utils.createMap(configOptions.webmap, "map", {
@@ -143,7 +151,6 @@
          map: map,
          scalebarUnit:i18n.viewer.main.scaleBarUnits //metric or english
        });
-
 
        var layerInfo = utilities.layout.buildLayersList(layers);
 
@@ -253,8 +260,9 @@
      };
     },
 
-    hideLoader: function(){
+    hideLoader:function(){
       $("#loadingCon").hide();
 	}
+
 
   });
