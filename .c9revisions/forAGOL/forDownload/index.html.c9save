@@ -96,3 +96,5 @@
 {"ts":1352307807449,"patch":[[{"diffs":[[0,"cript\">\n"],[-1,"    "],[0,"\n    doj"]],"start1":1194,"start2":1194,"length1":20,"length2":16}]],"length":3865,"saved":false}
 {"ts":1352307876021,"patch":[[{"diffs":[[0,"    "],[-1,"dojo.require(\"esri.widgets\");\n    dojo.require(\"esri.arcgis.utils\");"],[0,"\n   "]],"start1":1203,"start2":1203,"length1":76,"length2":8}]],"length":3797,"saved":false}
 {"ts":1352307877244,"patch":[[{"diffs":[[0,"\">\n\n"],[-1,"    \n"],[0,"    "]],"start1":1199,"start2":1199,"length1":13,"length2":8}]],"length":3792,"saved":false}
+{"ts":1352312251734,"patch":[[{"diffs":[[0,"ript\">\n\n    "],[1,"//"],[0,"dojo.require"]],"start1":1195,"start2":1195,"length1":24,"length2":26}]],"length":3794,"saved":false}
+{"ts":1352312255355,"patch":[[{"diffs":[[0,"\">\n\n    "],[-1,"//"],[0,"dojo.req"]],"start1":1199,"start2":1199,"length1":18,"length2":16}]],"length":3792,"saved":false}

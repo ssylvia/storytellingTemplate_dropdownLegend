@@ -4,7 +4,6 @@
   dojo.require("esri.layout");
   dojo.require("esri.widgets");
   dojo.require("esri.arcgis.utils");
-  dojo.requireLocalization("esriTemplate","template");
 
   //Jquery Layout
     $(document).ready(function(e) {
