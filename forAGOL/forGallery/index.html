@@ -12,18 +12,16 @@
 
      <script type="text/javascript">
       var dojoConfig = {
-		  parseOnLoad: true,
+    	  parseOnLoad: true,
 		  packages:[
-			{name:"esriTemplate",location:location.pathname.replace(/\/[^/]+$/, '')},
-            {name:"utilities",location:location.pathname.replace(/\/[^/]+$/, '') + '/javascript'}
+			{name:"esriTemplate",location:location.pathname.replace(/\/[^/]+$/, '')}
 		  ]
 		};
     </script>
     <script type="text/javascript" src="//servicesbeta.esri.com/jsapi/arcgis/?v=3.3"></script>
     <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="javascript/layout.js"></script>
     <script type="text/javascript">
-
-    dojo.require("utilities.layout");
 
     var configOptions;
 
@@ -50,7 +48,7 @@
         //Modify this to point to your sharing service URL if you are using the portal
         sharingurl :""
       };
-        utilities.layout.initMap();
+        initMap();
     }
 
     //show map on load
@@ -98,8 +96,8 @@
      			 <div id="loading"></div>
        			 <img id="loadingImg" alt="" src="images/progressBar.gif">
    		    </div>
- 		  </div
+ 		  </div>
 
-      ></body>
+      </body>
 
   </html>

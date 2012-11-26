@@ -4,26 +4,24 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=9">
-    <title>A story map presented by Esri</title>
-    <link rel="stylesheet" type="text/css" href="//servicesbeta.esri.com/jsapi/arcgis/3.3/js/dojo/dijit/themes/tundra/tundra.css">
-    <link rel="stylesheet" type="text/css" href="//servicesbeta.esri.com/jsapi/arcgis/3.3/js/esri/css/esri.css" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="http://servicesbeta.esri.com/jsapi/arcgis/3.3/js/dojo/dijit/themes/tundra/tundra.css">
+    <link rel="stylesheet" type="text/css" href="http://servicesbeta.esri.com/jsapi/arcgis/3.3/js/esri/css/esri.css" />
     <link rel="stylesheet" type="text/css" href="css/layout.css">
     <link rel="stylesheet" type="text/css" href="css/popup.css">
 
      <script type="text/javascript">
       var dojoConfig = {
-		  parseOnLoad: true,
+          parseOnLoad: true,
 		  packages:[
-			{name:"esriTemplate",location:location.pathname.replace(/\/[^/]+$/, '')},
-            {name:"utilities",location:location.pathname.replace(/\/[^/]+$/, '') + '/javascript'}
+			{name:"esriTemplate",location:location.pathname.replace(/\/[^/]+$/, '')}
 		  ]
 		};
     </script>
-    <script type="text/javascript" src="//servicesbeta.esri.com/jsapi/arcgis/?v=3.3"></script>
-    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="http://servicesbeta.esri.com/jsapi/arcgis/?v=3.3"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="javascript/layout.js"></script>
     <script type="text/javascript">
-
-    dojo.require("utilities.layout");
 
     var configOptions;
 
@@ -39,18 +37,20 @@
         title : "",
         //Enter a subtitle, if not specified the ArcGIS.com web map's summary is used
         subtitle : "",
-		//Display legend
+    	//Display legend
         legend : "true",
         //If the webmap uses Bing Maps data, you will need to provided your Bing Maps Key
-        bingmapskey : "Akt3ZoeZ089qyG3zWQZSWpwV3r864AHStal7Aon21-Fyxwq_KdydAH32LTwhieA8",
+        bingmapskey : "",
         //specify a proxy url if needed
         proxyurl:"",
         //specify the url to a geometry service
         geometryserviceurl:"http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer",
         //Modify this to point to your sharing service URL if you are using the portal
-        sharingurl :"http://arcgis.com/sharing/content/items"
+        sharingurl :"http://arcgis.com/sharing/content/items",
+        //Shift applicaton to read right to left
+        isRightToLeft : false
       };
-        utilities.layout.initMap();
+        initMap();
     }
 
     //show map on load
@@ -62,26 +62,6 @@
 	    background-color:#dadada;
 	  }
 	</style>
-
-    <!--Social Media Links-->
-    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-    <script type="text/javascript">
-        stLight.options({publisher: "77225c91-2742-42f7-b1b4-bddda99a9bde"});
-    </script>
-    <!--END Social Media Links-->
-    <!--Google Analytics Start-->
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-26529417-1']);
-        _gaq.push(['_trackPageview']);
-            (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-    <!--Google Analytics End-->
-
   </head>
 
       <body class="tundra">
@@ -95,16 +75,14 @@
               <div id="subtitle"></div>
             </div>
             <div id="logoArea">
-              <div id="social"><a id="smLink" href="http://storymaps.esri.com" target="_blank">A story map </a><span  class='st_facebook' ></span><span  class='st_twitter' st_via='EsriStoryMaps'></span></div>
-              <div id="logo"><a id="logoLink" href="http://www.esri.com" target="_blank"><img id="logoImg" src="images/esriGlobeLogow.png" alt="Esri - Home"></a></div>
             </div>
         <div id="header_flourish"></div>
 
           </div>
 
           <!-- Map Section -->
-          <div id="map" dojotype="dijit.layout.ContentPane" region="center">
-            <div id="legendCon">
+          <div id="map" dojotype="dijit.layout.ContentPane" region="center" dir="ltr">
+            <div id="legendCon"  dir="ltr">
               	<div id="legendToggle"><p id="legTogText"></p></div>
              	<div id="legendDiv"></div>
             </div>
@@ -120,8 +98,8 @@
      			 <div id="loading"></div>
        			 <img id="loadingImg" alt="" src="images/progressBar.gif">
    		    </div>
- 		  </div
+ 		  </div>
 
-      ></body>
+       </body>
 
   </html>
