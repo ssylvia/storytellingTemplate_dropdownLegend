@@ -1,5 +1,4 @@
   dojo.provide("utilities.layout");
-
   dojo.require("esri.map");
   dojo.require("esri.layout");
   dojo.require("esri.widgets");
