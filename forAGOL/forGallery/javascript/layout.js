@@ -136,7 +136,7 @@
          },"legendDiv");
          legendDijit.startup();
        }
-       else{         
+       else{
            $("#legendCon").hide();
        }
      }
